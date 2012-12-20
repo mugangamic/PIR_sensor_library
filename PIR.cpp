@@ -8,7 +8,9 @@ written by Oskari Rauta
 PIR::PIR(uint8 pin) {
   _pin = pin;
   pinMode(_pin, INPUT);
+#if ARDUINO >= 100
   digitalWrite(_pin, LOW);
+#endif
   calibrationTime = millis();
   if ( calibrationTime == 0 )
     calibrationTime = 1;
@@ -16,9 +18,7 @@ PIR::PIR(uint8 pin) {
 }
 
 boolean PIR::calibrating(void) {
-  if ( calibrationTime == 0 )
-    return false;
-  return true;
+  return ( calibrationTime != 0 );
 }
 
 boolean PIR::update(void) {
@@ -39,3 +39,5 @@ void PIR::resetState(void) {
 boolean PIR::state(void) {
   return _state;
 }
+
+        

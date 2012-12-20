@@ -15,7 +15,7 @@ written by Oskari Rauta
 */
 
 // Calibration time in milliseconds
-#define PIR_CAL_TIME 30
+#define PIR_CAL_TIME 60
   
 class PIR {
  private:
@@ -33,3 +33,4 @@ class PIR {
 };
 #endif
   
+        
